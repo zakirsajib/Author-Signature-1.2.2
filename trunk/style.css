@@ -1,0 +1,23 @@
+.preview{
+	width: 320px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 1em;
+	margin: 1em 0;
+	text-align: center;
+	float: none;
+}
+
+#img-preview{
+	max-width: 320px;
+	max-height: 320px;
+}
+
+input.medium-text{
+	width: 80%;
+}
+img.alignment-signature{
+	border: 1px solid #999;
+	padding: 5px 2px 2px;
+	border-radius: 5px;	
+}
