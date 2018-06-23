@@ -1,0 +1,18 @@
+.preview{
+	width: 320px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 1em;
+	margin: 1em 0;
+	text-align: center;
+	float: none;
+}
+
+#img-preview{
+	max-width: 320px;
+	max-height: 320px;
+}
+
+input.medium-text{
+	width: 80%;
+}

@@ -2,7 +2,7 @@
 Contributors: zakirstage
 Tags: author, signature, post signature, page signature, wordpress signature
 Requires at least: 2.8 or higher
-Tested up to: 4.9.6
+Tested up to: 4.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,7 +52,6 @@ Yes, it supports multi-users.
 * Add Woocommerce functionalities.
 * Add option for Best Regards texts
 * Add option for user name show or hide
-* Add uninstall file
 * Fixed bugs
 
 = 1.2.2 =

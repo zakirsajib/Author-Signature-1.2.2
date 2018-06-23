@@ -42,13 +42,13 @@ if (!class_exists("MySignature")){
 		public static function activate()
         {
             // Do nothing
-        } 
+        } // END public static function activate
     
              
         public static function deactivate()
         {
             // Do nothing
-        } 
+        } // END public static function deactivate
 
 		
 		function my_media_lib_uploader_enqueue() {
@@ -400,7 +400,7 @@ if (!class_exists("MySignature")){
 				<th scope="row"><?php _e('User Name', 'signature-group');?></th>
 				<td>
 					<p><input type="checkbox" name="signature-group[name]" value="1" <?php checked(1, $options['name'])?>/>
-					<?php _e("Show User Name above signature.", 'mysignature'); ?></p>
+					<?php _e("Show User Name above signature ?", 'mysignature'); ?></p>
 				</td>
 				</tr>
 			</table>
