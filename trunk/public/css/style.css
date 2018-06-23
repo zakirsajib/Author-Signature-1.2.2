@@ -1,0 +1,16 @@
+.signature-center {
+    text-align: center;
+}
+.signature-right {
+    text-align: right;
+}
+.signature-left {
+    text-align: left;
+}
+p.my-signature {
+	padding: 0 0 1rem;
+    margin: 0;
+}
+.signature-name {
+    padding: 0 0 1rem;
+}

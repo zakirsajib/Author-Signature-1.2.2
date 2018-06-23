@@ -29,37 +29,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 if (!class_exists("MySignature")){
 	class MySignature {
 		function __construct(){
-			add_action('admin_enqueue_scripts', array($this,'my_media_lib_uploader_enqueue'));
+			add_action('admin_enqueue_scripts', array($this,'media_lib_uploader_MySignature'));
 			add_action('admin_menu', array($this,'mysignature_menu'));
-			add_action('wp_enqueue_scripts', array($this,'mysignature_menu_frontend') );
-			add_action('show_user_profile', array($this, 'custom_user_profile_fields'));
-			add_action('edit_user_profile', array($this, 'custom_user_profile_fields'));
-			add_action( 'personal_options_update', array($this, 'save_extra_user_profile_fields' ));
-			add_action( 'edit_user_profile_update', array($this, 'save_extra_user_profile_fields' ));
+			add_action('wp_enqueue_scripts', array($this,'media_lib_uploader_frontend_MySignature') );
+			add_action('show_user_profile', array($this, 'custom_user_profile_fields_MySignature'));
+			add_action('edit_user_profile', array($this, 'custom_user_profile_fields_MySignature'));
+			add_action( 'personal_options_update', array($this, 'save_extra_user_profile_fields_MySignature' ));
+			add_action( 'edit_user_profile_update', array($this, 'save_extra_user_profile_fields_MySignature' ));
 			add_filter('the_content', array($this, 'post_signature'));
 		}
 		
-		public static function activate()
-        {
-            // Do nothing
+		public static function activate_MySignature(){
+            flush_rewrite_rules();
         } 
     
              
-        public static function deactivate()
-        {
-            // Do nothing
+        public static function deactivate_MySignature(){
+            flush_rewrite_rules();
         } 
 
 		
-		function my_media_lib_uploader_enqueue() {
-		 	wp_enqueue_style( 'signature-style-admin', plugins_url( '/admin/style.css' , __FILE__ ) );
+		function media_lib_uploader_MySignature() {
+		 	wp_enqueue_style( 'signature-style-admin', plugins_url( '/admin/css/style.css' , __FILE__ ) );
 		 	wp_enqueue_media();
-		 	wp_register_script( 'media-lib-uploader-js', plugins_url( 'media-lib-uploader.js' , __FILE__ ), array('jquery') );
+		 	wp_register_script( 'media-lib-uploader-js', plugins_url( '/admin/js/media-lib-uploader.js' , __FILE__ ), array('jquery') );
 		 	wp_enqueue_script( 'media-lib-uploader-js' );
 		}
 		
-		function mysignature_menu_frontend(){
-			wp_enqueue_style( 'signature-style', plugins_url( 'style.css' , __FILE__ ) );
+		function media_lib_uploader_frontend_MySignature(){
+			wp_enqueue_style( 'signature-style', plugins_url( '/public/css/style.css' , __FILE__ ) );
 		}
 		
 					
@@ -325,7 +323,7 @@ if (!class_exists("MySignature")){
 		
 		
 		// Multi-user capabilities 
-		function custom_user_profile_fields($user) {
+		function custom_user_profile_fields_MySignature($user) {
 		?>
 			<table class="form-table">
 				<tr>
@@ -358,7 +356,7 @@ if (!class_exists("MySignature")){
 		
 		
 
-		function save_extra_user_profile_fields( $user_id ) {
+		function save_extra_user_profile_fields_MySignature( $user_id ) {
 		    if ( !current_user_can( 'edit_user', $user_id ) ) { 
 		        return false; 
 		    }
@@ -367,7 +365,7 @@ if (!class_exists("MySignature")){
 		
 		
 		# Settings page
-		function adminPage(){?>							
+		function adminPage_MySignature(){?>							
 			<div class="wrap">
 			<h1><?php _e('Author Signature', 'mysignature'); ?></h1>
 					
@@ -435,17 +433,17 @@ if (!class_exists("MySignature")){
 				<tr valign="top">
 					<th scope="row"><?php _e('Alignment', 'signature-group');?></th>
 					<td>
-						<img class="alignment-signature" src="<?php echo plugins_url( 'img/alignment-left.jpg' , __FILE__ )?>" alt="Alignmnent Left">
+						<img class="alignment-signature" src="<?php echo plugins_url( 'admin/img/alignment-left.jpg' , __FILE__ )?>" alt="Alignmnent Left">
 						<p><input type="radio" name="signature-group[alignment]" value="left" <?php checked('left', $options['alignment']) ?> />
 						<?php _e("Left", 'mysignature'); ?></p>							
 					</td>
 					<td>	
-						<img class="alignment-signature" src="<?php echo plugins_url( 'img/alignment-center.jpg' , __FILE__ )?>" alt="Alignmnent Center">
+						<img class="alignment-signature" src="<?php echo plugins_url( 'admin/img/alignment-center.jpg' , __FILE__ )?>" alt="Alignmnent Center">
 						<p><input type="radio" name="signature-group[alignment]" value="center" <?php checked('center', $options['alignment'] ) ?> />
 						<?php _e("Center", 'mysignature'); ?></p>
 					</td>
 					<td>	
-						<img class="alignment-signature" src="<?php echo plugins_url( 'img/alignment-right.jpg' , __FILE__ )?>" alt="Alignmnent Right">
+						<img class="alignment-signature" src="<?php echo plugins_url( 'admin/img/alignment-right.jpg' , __FILE__ )?>" alt="Alignmnent Right">
 						<p><input type="radio" name="signature-group[alignment]" value="right" <?php checked('right', $options['alignment'])?> />
 						<?php _e("Right (default)", 'mysignature'); ?></p>
 					</td>
@@ -471,7 +469,7 @@ if (!class_exists("MySignature")){
 		# admin panel into Settings menu
 		function mysignature_menu(){
 			if(function_exists('add_options_page')){
-				add_menu_page('My Signature', 'Signature', 'administrator', __FILE__, array($this, 'adminPage'), 'dashicons-sticky');
+				add_menu_page('My Signature', 'Signature', 'administrator', __FILE__, array($this, 'adminPage_MySignature'), 'dashicons-sticky');
 				# set defaults
 				$options = array(
 					'post' => 'posts',
@@ -482,7 +480,6 @@ if (!class_exists("MySignature")){
 					'before' =>	'Best Regards'
 				);
 				add_option('signature-group', $options, '', 'yes'); 
-				//add_action('admin_init', array($this, 'register_settings'));
 				register_setting('signature-group', 'signature-group', $options);
 			}
 		}
@@ -492,7 +489,7 @@ if (!class_exists("MySignature")){
 
 # Object Creation here: Important
 if (class_exists("MySignature")){	
-	register_activation_hook(__FILE__, array('WP_Plugin_Template', 'activate'));
-	register_deactivation_hook(__FILE__, array('WP_Plugin_Template', 'deactivate'));
+	register_activation_hook(__FILE__, array('WP_Plugin_Template', 'activate_MySignature'));
+	register_deactivation_hook(__FILE__, array('WP_Plugin_Template', 'deactivate_MySignature'));
 	$signature_obj = new MySignature();
 }?>
