@@ -12,3 +12,6 @@ img.alignment-signature{
 	-webkit-border-radius: 5px;	
 	border-radius: 5px;	
 }
+.preview{
+	float: left;
+}

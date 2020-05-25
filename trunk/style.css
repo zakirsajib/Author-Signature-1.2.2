@@ -1,16 +1,17 @@
-.signature-center {
-    text-align: center;
+input.medium-text{
+	width: 80%;
 }
-.signature-right {
-    text-align: right;
+input.medium {
+    width: 30%;
+    display: block;
 }
-.signature-left {
-    text-align: left;
+img.alignment-signature{
+	border: 1px solid #999;
+	padding: 5px 2px 2px;
+	-moz-border-radius: 5px;	
+	-webkit-border-radius: 5px;	
+	border-radius: 5px;	
 }
-p.my-signature {
-	padding: 0 0 1rem;
-    margin: 0;
-}
-.signature-name {
-    padding: 0 0 1rem;
+.preview{
+	float: left;
 }
