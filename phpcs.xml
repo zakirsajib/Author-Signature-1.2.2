@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Ovulation Calculator">
-	<description>Ovulation Calculator rules for PHP_CodeSniffer</description>
+	<description>Author Signature rules for PHP_CodeSniffer</description>
 	<exclude-pattern>vendor/*</exclude-pattern>
 	<arg name="extensions" value="php" />
 	<arg value="nsp" />
