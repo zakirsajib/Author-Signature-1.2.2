@@ -3,9 +3,9 @@
 Plugin Name: Author Signature
 Plugin URI: https://wordpress.org/plugins/author-signature/
 Description: Displays the image of signature after each post and/or page. Supports multiusers.
-Version: 1.2.3
+Version: 1.2.4
 Author: Zakir Sajib
-Author URI: zakirsajib@gmail.com
+Author URI: https://zakirsajib.netlify.app
 License: GPL2
 
 Copyright 2018  Zakir Sajib  (email : zakirsajib@gmail.com)
